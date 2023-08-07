@@ -1,7 +1,16 @@
--- DROP USER METROTICKET CASCADE;
+-- Set the "_oracle_script" parameter to TRUE in the current session.
+ALTER SESSION SET "_oracle_script"= TRUE;
 
+-- Drop the user "METROTICKET" along with all of its schema objects.
+DROP USER METROTICKET CASCADE;
+
+-- Create a new database user named "METROTICKET" with the password "123".
 CREATE USER METROTICKET IDENTIFIED BY "123";
 
+-- Set the current schema to "METROTICKET"
+ALTER SESSION SET CURRENT_SCHEMA = METROTICKET;
+
+-- Grant privileges to the "METROTICKET" user - create views, connect to the database, use system resources, and have unlimited tablespace quota.
 GRANT CREATE VIEW, CONNECT, RESOURCE, UNLIMITED TABLESPACE TO METROTICKET;
 
 -- manager table
